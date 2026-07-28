@@ -3,6 +3,26 @@
    1 единица = 1 пиксель Figma, пересчёт в реальные пиксели через --u.
    by MRWLTR */
 
+/* --------------------------------------------------- шрифты макета */
+/* Оригиналы из Figma: заголовки — Yauza TYGRA, текст — Radiant.
+   Файлы лежат в репозитории, внешних загрузок нет. */
+
+@font-face {
+  font-family: "Yauza TYGRA";
+  src: url("../fonts/YauzaTygra.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Radiant";
+  src: url("../fonts/Radiant.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* ширина сцены: не уже вьюпорта, не шире 430 */
   --w: min(100vw, 430px);
@@ -15,9 +35,7 @@
   --body: #4f4f4f;
   --paper: #f8f2ec;
 
-  /* Оригиналы макета — Yauza TYGRA и Radiant, лицензионные.
-     Пока стоят открытые аналоги. Когда придут файлы от дизайнера:
-     подключить @font-face ниже и поставить семейство первым в стек. */
+  /* Шрифты макета подключены выше; дальше по стеку — запасные. */
   --font-display: "Yauza TYGRA", "Cormorant Unicase", "Playfair Display", Georgia, serif;
   --font-body: "Radiant", "PT Serif", Georgia, serif;
 }
@@ -211,7 +229,8 @@ body {
 
 .t--display {
   font-family: var(--font-display);
-  font-weight: 500;
+  /* в макете единственное начертание Yauza TYGRA Regular — жирность не наводить */
+  font-weight: 400;
   color: var(--ink);
   letter-spacing: .01em;
 }
@@ -284,42 +303,54 @@ body {
 
 /* --------------------------------------------------- съедобные украшения */
 
+/* В макете это Mask group: снимок еды обрезан скруглённой плашкой (rx 11).
+   Обрезка сделана рамкой с overflow, а не mask-image — так значки видны
+   и по file://, где браузер запрещает внешние маски. */
+
 .treat {
   position: absolute;
+  display: block;
+  overflow: hidden;
+  border-radius: calc(11 * var(--u));
   z-index: 15;
+}
+
+.treat__art {
+  position: absolute;
+  display: block;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
 }
 
+/* плашка 70:228 — 72×22 в точке (31, 2083) */
 .treat--1 {
-  left: calc(29.2 * var(--u));
-  top: calc(2053.46 * var(--u));
+  left: calc(31 * var(--u));
+  top: calc(2083 * var(--u));
+  width: calc(72 * var(--u));
+  height: calc(22 * var(--u));
+}
+.treat--1 .treat__art {
+  left: calc(-1.8 * var(--u));
+  top: calc(-29.542 * var(--u));
   width: calc(77.35 * var(--u));
   height: calc(51.566 * var(--u));
   background-image: url("../img/icon-food-2.webp");
-  -webkit-mask-image: url("../img/icon-food-2-m.png");
-          mask-image: url("../img/icon-food-2-m.png");
-  -webkit-mask-size: calc(72 * var(--u)) calc(22 * var(--u));
-          mask-size: calc(72 * var(--u)) calc(22 * var(--u));
-  -webkit-mask-position: calc(1.8 * var(--u)) calc(29.542 * var(--u));
-          mask-position: calc(1.8 * var(--u)) calc(29.542 * var(--u));
 }
 
+/* плашка 70:229 — 62×22 в точке (307, 2137) */
 .treat--2 {
-  left: calc(304 * var(--u));
-  top: calc(2119 * var(--u));
+  left: calc(307 * var(--u));
+  top: calc(2137 * var(--u));
+  width: calc(62 * var(--u));
+  height: calc(22 * var(--u));
+}
+.treat--2 .treat__art {
+  left: calc(-3 * var(--u));
+  top: calc(-18 * var(--u));
   width: calc(72 * var(--u));
   height: calc(48 * var(--u));
   background-image: url("../img/icon-food-1.webp");
-  -webkit-mask-image: url("../img/icon-food-1-m.png");
-          mask-image: url("../img/icon-food-1-m.png");
-  -webkit-mask-size: calc(62 * var(--u)) calc(22 * var(--u));
-          mask-size: calc(62 * var(--u)) calc(22 * var(--u));
-  -webkit-mask-position: calc(3 * var(--u)) calc(18 * var(--u));
-          mask-position: calc(3 * var(--u)) calc(18 * var(--u));
 }
 
 /* ------------------------------------------------------------ адрес и карта */
