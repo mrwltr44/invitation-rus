@@ -1,0 +1,13 @@
+# Текст храним с LF, в рабочей копии Windows пусть будет CRLF.
+* text=auto eol=lf
+
+# Бинарники git не трогает: конвертация переводов строк их ломает.
+*.png  binary
+*.webp binary
+*.jpg  binary
+*.jpeg binary
+*.ico  binary
+*.woff  binary
+*.woff2 binary
+*.otf  binary
+*.ttf  binary

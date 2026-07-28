@@ -1,0 +1,18 @@
+# системное
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# редакторы
+.vscode/
+.idea/
+*.swp
+
+# временное
+*.log
+/tmp/
+/.cache/
+
+# исходные выгрузки из Figma до сжатия (в репозиторий идут только .webp)
+assets/img/*.png
+!assets/img/*-m.png

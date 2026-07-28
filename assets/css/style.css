@@ -1,0 +1,414 @@
+/* Приглашение на юбилей — вёрстка по макету Figma «Юбилей» (node 70:178).
+   Макет мобильный, 402×3134. Все координаты ниже — в единицах макета:
+   1 единица = 1 пиксель Figma, пересчёт в реальные пиксели через --u.
+   by MRWLTR */
+
+:root {
+  /* ширина сцены: не уже вьюпорта, не шире 430 */
+  --w: min(100vw, 430px);
+  /* цена одной единицы макета в реальных пикселях */
+  --u: calc(var(--w) / 402);
+
+  --crimson: #6f2929;
+  --ink: #662e2e;
+  --ink-pill: #6b2828;
+  --body: #4f4f4f;
+  --paper: #f8f2ec;
+
+  /* Оригиналы макета — Yauza TYGRA и Radiant, лицензионные.
+     Пока стоят открытые аналоги. Когда придут файлы от дизайнера:
+     подключить @font-face ниже и поставить семейство первым в стек. */
+  --font-display: "Yauza TYGRA", "Cormorant Unicase", "Playfair Display", Georgia, serif;
+  --font-body: "Radiant", "PT Serif", Georgia, serif;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: #e9ddcd;
+  color: var(--ink);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+/* ------------------------------------------------------------------ сцена */
+
+.stage {
+  position: relative;
+  width: var(--w);
+  height: calc(3134 * var(--u));
+  margin-inline: auto;
+  background: var(--paper);
+  overflow: hidden;
+  box-shadow: 0 0 calc(60 * var(--u)) rgba(58, 20, 20, .28);
+}
+
+/* секции — смысловые группы; позиционируются дети, не они сами */
+.scene { display: block; }
+
+/* -------------------------------------------------------------- заливки */
+
+.plate {
+  position: absolute;
+  left: 0;
+  width: calc(402 * var(--u));
+  background: var(--crimson);
+}
+
+.plate--crimson { top: 0;                       height: calc(874 * var(--u)); z-index: 2; }
+.plate--band    { top: calc(1752 * var(--u));   height: calc(146 * var(--u)); z-index: 8; }
+.plate--foot    { top: calc(2346 * var(--u));   height: calc(788 * var(--u)); z-index: 16; }
+
+/* ------------------------------------------------------------ иллюстрации */
+
+.art {
+  position: absolute;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.art img {
+  position: absolute;
+  display: block;
+  max-width: none;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* верхний орнамент-вышивка, частично уходит за верхний край */
+.art--ornament-top {
+  left: calc(-37 * var(--u));
+  top: calc(-110 * var(--u));
+  width: calc(555 * var(--u));
+  height: calc(370 * var(--u));
+  z-index: 7;
+}
+.art--ornament-top img { object-fit: cover; }
+
+/* самовар — в макете отражён по горизонтали */
+.art--samovar {
+  left: calc(150 * var(--u));
+  top: calc(277 * var(--u));
+  width: calc(375 * var(--u));
+  height: calc(562 * var(--u));
+  z-index: 6;
+}
+.art--samovar img {
+  object-fit: cover;
+  transform: scaleX(-1);
+}
+
+/* рваная бумага под заголовком */
+.art--torn {
+  left: calc(-117 * var(--u));
+  top: calc(170 * var(--u));
+  width: calc(584 * var(--u));
+  height: calc(245 * var(--u));
+  z-index: 4;
+}
+.art--torn img { height: 158.91%; top: -30.68%; }
+
+/* берёзовая кора, отражена по вертикали */
+.art--birch {
+  left: calc(-242 * var(--u));
+  top: calc(655 * var(--u));
+  width: calc(850 * var(--u));
+  height: calc(333 * var(--u));
+  z-index: 3;
+}
+.art--birch img {
+  height: 170.38%;
+  top: -39.02%;
+  transform: scaleY(-1);
+}
+
+/* общая фактура поверх кремового фона */
+.art--texture {
+  left: calc(-32 * var(--u));
+  top: calc(962 * var(--u));
+  width: calc(626 * var(--u));
+  height: calc(790 * var(--u));
+  opacity: .1;
+  mix-blend-mode: multiply;
+  z-index: 1;
+}
+.art--texture img { height: 118.86%; top: -.06%; }
+
+/* резной наличник с датой */
+.art--nalichnik {
+  left: calc(4 * var(--u));
+  top: calc(1108 * var(--u));
+  width: calc(394 * var(--u));
+  height: calc(524 * var(--u));
+  z-index: 9;
+}
+.art--nalichnik img { height: 112.79%; top: -4.39%; }
+
+/* тот же орнамент, приглушённый, в середине полосы */
+.art--ornament-mid {
+  left: calc(-32 * var(--u));
+  top: calc(1644 * var(--u));
+  width: calc(555 * var(--u));
+  height: calc(259 * var(--u));
+  opacity: .6;
+  z-index: 11;
+}
+.art--ornament-mid img { height: 142.86%; }
+
+/* связка баранок на верёвке */
+.art--baranki {
+  left: calc(77 * var(--u));
+  top: calc(1493 * var(--u));
+  width: calc(440 * var(--u));
+  height: calc(444 * var(--u));
+  z-index: 12;
+}
+.art--baranki img {
+  left: -.08%;
+  width: 100.16%;
+  height: 149.17%;
+  transform-origin: 50% 0;
+}
+
+/* растительный водяной знак под текстом про забавы */
+.art--floral {
+  left: calc(-141 * var(--u));
+  top: calc(1930 * var(--u));
+  width: calc(603.263 * var(--u));
+  height: calc(676.222 * var(--u));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  z-index: 13;
+}
+.art__tilt {
+  position: relative;
+  flex: none;
+  width: calc(420.067 * var(--u));
+  height: calc(556.832 * var(--u));
+  overflow: hidden;
+  opacity: .05;
+  transform: rotate(22.84deg);
+}
+.art__tilt img { left: -98.84%; width: 198.84%; }
+
+/* ------------------------------------------------------------------ текст */
+
+.t {
+  position: absolute;
+  margin: 0;
+  white-space: nowrap;
+  word-break: break-word;
+}
+
+.t--display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: .01em;
+}
+
+.t--body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--body);
+}
+
+.t--call {
+  left: calc(31 * var(--u));
+  top: calc(212 * var(--u));
+  font-size: calc(34 * var(--u));
+  line-height: calc(45 * var(--u));
+  z-index: 5;
+}
+
+.t--call-sub {
+  left: calc(31 * var(--u));
+  top: calc(312 * var(--u));
+  font-size: calc(18 * var(--u));
+  line-height: calc(20 * var(--u));
+  z-index: 5;
+}
+
+.t--date {
+  left: calc(126 * var(--u));
+  top: calc(1333 * var(--u));
+  font-size: calc(25 * var(--u));
+  line-height: calc(45 * var(--u));
+  z-index: 10;
+}
+
+.t--time {
+  left: calc(129 * var(--u));
+  top: calc(1408 * var(--u));
+  font-size: calc(64 * var(--u));
+  line-height: calc(45 * var(--u));
+  z-index: 10;
+}
+
+.t--feast {
+  font-size: calc(25 * var(--u));
+  line-height: calc(45 * var(--u));
+  z-index: 14;
+}
+.t--feast-1 { left: calc(31 * var(--u));  top: calc(2016 * var(--u)); }
+.t--feast-2 { left: calc(113 * var(--u)); top: calc(2071 * var(--u)); }
+.t--feast-3 { left: calc(31 * var(--u));  top: calc(2126 * var(--u)); }
+.t--feast-4 { left: calc(31 * var(--u));  top: calc(2181 * var(--u)); }
+
+.t--where {
+  left: calc(31 * var(--u));
+  top: calc(2428 * var(--u));
+  font-size: calc(34 * var(--u));
+  line-height: calc(45 * var(--u));
+  color: #fff;
+  z-index: 17;
+}
+
+.t--where-sub {
+  left: calc(31 * var(--u));
+  top: calc(2483 * var(--u));
+  font-size: calc(18 * var(--u));
+  line-height: calc(20 * var(--u));
+  color: #fff;
+  z-index: 17;
+}
+
+/* --------------------------------------------------- съедобные украшения */
+
+.treat {
+  position: absolute;
+  z-index: 15;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+}
+
+.treat--1 {
+  left: calc(29.2 * var(--u));
+  top: calc(2053.46 * var(--u));
+  width: calc(77.35 * var(--u));
+  height: calc(51.566 * var(--u));
+  background-image: url("../img/icon-food-2.webp");
+  -webkit-mask-image: url("../img/icon-food-2-m.png");
+          mask-image: url("../img/icon-food-2-m.png");
+  -webkit-mask-size: calc(72 * var(--u)) calc(22 * var(--u));
+          mask-size: calc(72 * var(--u)) calc(22 * var(--u));
+  -webkit-mask-position: calc(1.8 * var(--u)) calc(29.542 * var(--u));
+          mask-position: calc(1.8 * var(--u)) calc(29.542 * var(--u));
+}
+
+.treat--2 {
+  left: calc(304 * var(--u));
+  top: calc(2119 * var(--u));
+  width: calc(72 * var(--u));
+  height: calc(48 * var(--u));
+  background-image: url("../img/icon-food-1.webp");
+  -webkit-mask-image: url("../img/icon-food-1-m.png");
+          mask-image: url("../img/icon-food-1-m.png");
+  -webkit-mask-size: calc(62 * var(--u)) calc(22 * var(--u));
+          mask-size: calc(62 * var(--u)) calc(22 * var(--u));
+  -webkit-mask-position: calc(3 * var(--u)) calc(18 * var(--u));
+          mask-position: calc(3 * var(--u)) calc(18 * var(--u));
+}
+
+/* ------------------------------------------------------------ адрес и карта */
+
+.pill {
+  position: absolute;
+  left: calc(31 * var(--u));
+  top: calc(2561 * var(--u));
+  min-width: calc(124 * var(--u));
+  height: calc(22 * var(--u));
+  padding: 0 calc(10 * var(--u));
+  border-radius: calc(20 * var(--u));
+  background: var(--paper);
+  color: var(--ink-pill);
+  font-family: var(--font-body);
+  font-size: calc(18 * var(--u));
+  line-height: calc(22 * var(--u));
+  text-decoration: none;
+  white-space: nowrap;
+  z-index: 17;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.pill:hover,
+.pill:focus-visible {
+  transform: translateY(calc(-1 * var(--u)));
+  box-shadow: 0 calc(4 * var(--u)) calc(12 * var(--u)) rgba(0, 0, 0, .25);
+}
+
+.map-card {
+  position: absolute;
+  left: calc(31 * var(--u));
+  top: calc(2623 * var(--u));
+  width: calc(340 * var(--u));
+  height: calc(391 * var(--u));
+  border-radius: calc(20 * var(--u));
+  background: var(--paper);
+  overflow: hidden;
+  z-index: 17;
+}
+
+.map-card__frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* -------------------------------------------------------------- появления */
+
+.reveal {
+  opacity: 0;
+  transition:
+    opacity .9s cubic-bezier(.22, .68, .3, 1),
+    transform .9s cubic-bezier(.22, .68, .3, 1);
+}
+
+.reveal--up        { transform: translateY(calc(30 * var(--u))); }
+.reveal--drop      { transform: translateY(calc(-46 * var(--u))); }
+.reveal--from-right{ transform: translateX(calc(70 * var(--u))); }
+.reveal--scale     { transform: scale(.92); }
+.reveal--fade      { transform: none; }
+
+.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* приглушённые слои держат свою прозрачность и после появления */
+.art--ornament-mid.is-in { opacity: .6; }
+
+/* баранки покачиваются на верёвке, когда появились */
+.art--baranki.is-in img {
+  animation: sway 5s ease-in-out .8s infinite;
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-1.1deg); }
+  50%      { transform: rotate(1.1deg); }
+}
+
+/* ------------------------------------------------------- бережный режим */
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .art--baranki.is-in img { animation: none; }
+  .pill { transition: none; }
+}
