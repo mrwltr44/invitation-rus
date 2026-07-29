@@ -469,11 +469,14 @@ body {
 
 /* --------------------------------------------------------------- отзовитесь */
 
-/* Пока это span: адреса назначения дизайнер не дал. Селектор перечисляет и <a>,
-   чтобы при появлении ссылки хватило поменять один тег в разметке. */
+/* Кнопка открывает окно выбора мессенджера. Селектор перечисляет и <a> на случай,
+   если однажды понадобится увести её прямой ссылкой. */
 .cta,
 a.cta {
   position: absolute;
+  appearance: none;
+  background: none;
+  cursor: pointer;
   left: calc(31 * var(--u));
   top: calc(4211 * var(--u));
   display: flex;
@@ -494,11 +497,124 @@ a.cta {
   transition: background-color .25s ease, color .25s ease;
 }
 
-a.cta:hover,
-a.cta:focus-visible {
+.cta:hover,
+.cta:focus-visible {
   background: var(--paper);
   color: var(--crimson);
 }
+
+/* ------------------------------------------------------- окно выбора связи */
+
+/* Макета у окна нет — собрано в ладу страницы: кремовая бумага, бордо, те же
+   шрифты и та же единица --u, чтобы пропорции не разъезжались с приглашением. */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(24 * var(--u));
+  z-index: 100;
+}
+
+.modal[hidden] { display: none; }
+
+.modal__veil {
+  position: absolute;
+  inset: 0;
+  background: rgba(58, 20, 20, .62);
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.modal__card {
+  position: relative;
+  width: calc(340 * var(--u));
+  max-width: 100%;
+  padding: calc(28 * var(--u)) calc(22 * var(--u)) calc(22 * var(--u));
+  border-radius: calc(20 * var(--u));
+  background: var(--paper);
+  box-shadow: 0 calc(20 * var(--u)) calc(50 * var(--u)) rgba(58, 20, 20, .45);
+  opacity: 0;
+  transform: translateY(calc(18 * var(--u))) scale(.96);
+  transition:
+    opacity .3s cubic-bezier(.22, .68, .3, 1),
+    transform .3s cubic-bezier(.22, .68, .3, 1);
+}
+
+.is-open .modal__veil { opacity: 1; }
+
+.is-open .modal__card {
+  opacity: 1;
+  transform: none;
+}
+
+.modal__title {
+  margin: 0 0 calc(18 * var(--u));
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: calc(26 * var(--u));
+  line-height: calc(34 * var(--u));
+  color: var(--ink);
+  text-align: center;
+  letter-spacing: .01em;
+}
+
+.modal__close {
+  position: absolute;
+  top: calc(8 * var(--u));
+  right: calc(10 * var(--u));
+  padding: calc(6 * var(--u));
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: calc(16 * var(--u));
+  line-height: 1;
+  opacity: .55;
+  cursor: pointer;
+  transition: opacity .2s ease;
+}
+
+.modal__close:hover,
+.modal__close:focus-visible { opacity: 1; }
+
+/* строка выбора мессенджера */
+.way {
+  display: flex;
+  align-items: center;
+  gap: calc(14 * var(--u));
+  padding: calc(12 * var(--u)) calc(16 * var(--u));
+  border: calc(1 * var(--u)) solid rgba(111, 41, 41, .22);
+  border-radius: calc(16 * var(--u));
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: calc(22 * var(--u));
+  line-height: calc(28 * var(--u));
+  text-decoration: none;
+  letter-spacing: .01em;
+  transition: background-color .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+.way + .way { margin-top: calc(10 * var(--u)); }
+
+.way:hover,
+.way:focus-visible {
+  background: rgba(111, 41, 41, .06);
+  border-color: rgba(111, 41, 41, .45);
+  transform: translateY(calc(-1 * var(--u)));
+}
+
+.way__icon {
+  flex: none;
+  width: calc(38 * var(--u));
+  height: calc(38 * var(--u));
+  display: block;
+}
+
+.way__name { display: block; }
 
 /* -------------------------------------------------------------- появления */
 
@@ -544,5 +660,13 @@ a.cta:focus-visible {
   }
   .art--baranki.is-in img { animation: none; }
   .pill,
-  .cta { transition: none; }
+  .cta,
+  .way { transition: none; }
+
+  .modal__veil,
+  .modal__card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

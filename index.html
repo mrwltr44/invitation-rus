@@ -156,14 +156,37 @@
               loading="lazy" allowfullscreen></iframe>
     </div>
 
-    <!-- Дизайнер не дал кнопке адреса назначения. Когда он появится, этот span
-         меняется на <a href="…"> — стили у обоих общие. -->
-    <span class="cta reveal reveal--up" data-delay="160" data-node="95:34">
+    <button class="cta reveal reveal--up" type="button" data-delay="160" data-node="95:34"
+            aria-haspopup="dialog" aria-controls="reply">
       сообщить<br>о своем почтении
-    </span>
+    </button>
   </section>
 
 </main>
+
+<!-- Выбор, куда слать весть. Лежит вне .stage: у сцены overflow: hidden,
+     внутри неё окно обрезалось бы по краю страницы. -->
+<div class="modal" id="reply" hidden>
+  <div class="modal__veil" data-close></div>
+
+  <div class="modal__card" role="dialog" aria-modal="true" aria-labelledby="reply-title">
+    <p class="modal__title" id="reply-title">Куда весть слать?</p>
+
+    <a class="way" href="https://max.ru/u/f9LHodD0cOIDSJJm0Rj7vngIc2kYowNfytnNdW8AWEG1l9J1xi_VRJkFlQw"
+       target="_blank" rel="noopener">
+      <!-- названия кириллицей: в Yauza TYGRA латиница рисуется чужими глифами -->
+      <img class="way__icon" src="assets/img/social-max.svg" alt="" width="44" height="44">
+      <span class="way__name">Макс</span>
+    </a>
+
+    <a class="way" href="https://t.me/+79778008068" target="_blank" rel="noopener">
+      <img class="way__icon" src="assets/img/social-telegram.svg" alt="" width="44" height="44">
+      <span class="way__name">Телеграм</span>
+    </a>
+
+    <button class="modal__close" type="button" data-close aria-label="Затворить">&#10005;</button>
+  </div>
+</div>
 
 <script src="assets/js/main.js" defer></script>
 </body>
