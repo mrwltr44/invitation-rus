@@ -460,11 +460,44 @@ body {
   z-index: 26;
 }
 
+/* Рамка выше карточки и приподнята: за верхний и нижний край уходят полосы,
+   где виджет держит свой служебный текст — масштабную линейку, «Условия
+   использования», «Конфиденциальность». Метка остаётся ровно по центру. */
 .map-card__frame {
+  position: absolute;
+  left: 0;
+  top: calc(-34 * var(--u));
   display: block;
   width: 100%;
-  height: 100%;
+  height: calc(100% + 68 * var(--u));
   border: 0;
+}
+
+/* явная кнопка маршрута поверх карты */
+.route {
+  position: absolute;
+  left: 50%;
+  bottom: calc(12 * var(--u));
+  transform: translateX(-50%);
+  padding: calc(7 * var(--u)) calc(18 * var(--u));
+  border-radius: calc(20 * var(--u));
+  background: var(--paper);
+  box-shadow: 0 calc(3 * var(--u)) calc(10 * var(--u)) rgba(58, 20, 20, .3);
+  color: var(--ink-pill);
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: calc(18 * var(--u));
+  line-height: calc(24 * var(--u));
+  text-decoration: none;
+  white-space: nowrap;
+  letter-spacing: .01em;
+  transition: background-color .25s ease, color .25s ease;
+}
+
+.route:hover,
+.route:focus-visible {
+  background: var(--crimson);
+  color: var(--paper);
 }
 
 /* --------------------------------------------------------------- отзовитесь */
@@ -661,7 +694,8 @@ a.cta {
   .art--baranki.is-in img { animation: none; }
   .pill,
   .cta,
-  .way { transition: none; }
+  .way,
+  .route { transition: none; }
 
   .modal__veil,
   .modal__card {

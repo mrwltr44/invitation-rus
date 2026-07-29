@@ -150,10 +150,16 @@
        target="_blank" rel="noopener">Речной пр., 19 к1</a>
 
     <div class="map-card reveal reveal--scale" data-delay="180" data-node="70:243">
+      <!-- Карта задана координатами с меткой, а не текстовым поиском: так виджет
+           не показывает строку «найдено» и не раскрывает балун с адресом и
+           кнопками. Верх и низ подрезаны рамкой — там сидит служебный текст. -->
       <iframe class="map-card__frame"
-              src="https://yandex.ru/map-widget/v1/?text=%D0%9C%D0%BE%D1%81%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C%2C%20%D0%96%D1%83%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%2C%20%D0%A0%D0%B5%D1%87%D0%BD%D0%BE%D0%B9%20%D0%BF%D1%80%D0%BE%D0%B5%D0%B7%D0%B4%2C%2019&amp;z=16"
+              src="https://yandex.ru/map-widget/v1/?ll=38.098499%2C55.570807&amp;z=17&amp;l=map&amp;pt=38.098499,55.570807,pm2rdm"
               title="Карта: Ваша Гавань, Речной проезд, 19, Жуковский"
               loading="lazy" allowfullscreen></iframe>
+
+      <a class="route" href="https://yandex.ru/maps/?rtext=~55.570807%2C38.098499&amp;rtt=auto"
+         target="_blank" rel="noopener">проложить путь</a>
     </div>
 
     <button class="cta reveal reveal--up" type="button" data-delay="160" data-node="95:34"
