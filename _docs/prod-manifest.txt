@@ -1,12 +1,12 @@
-﻿Опись пакета PROD для домена evgeny35.online
+﻿Опись пакета PROD для домена evgeny35.ru
 Собрано скриптом tools/build-prod.ps1, руками не править.
 
 файлов: 25, всего 2,27 МБ
 
-.htaccess                                   3587 b  58DC77E551FA3423
+.htaccess                                   3583 b  504441FACEA53256
 apple-touch-icon.png                       15632 b  50098A4B9ADE579A
 favicon.ico                                 6102 b  6AEA82B7A183CB5C
-index.html                                 10797 b  CABAE281322A6DC4
+index.html                                 10785 b  85B49BE30B7CD4D0
 robots.txt                                   533 b  C3DD7BFC31B4DEDC
 assets/css/style.css                       19420 b  15ABF94D642C7A8E
 assets/fonts/Radiant.ttf                  290488 b  B6EF87AD19B8C7A6

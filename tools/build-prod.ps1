@@ -1,4 +1,4 @@
-﻿# Сборка папки PROD — того, что заливается в каталог домена evgeny35.online.
+﻿# Сборка папки PROD — того, что заливается в каталог домена evgeny35.ru.
 #
 # PROD никогда не правится руками: это копия исходников плюс два серверных
 # файла (.htaccess и robots.txt), которые лежат в репозитории рядом.
@@ -49,7 +49,7 @@ $rows = Get-ChildItem $prod -Recurse -File -Force | ForEach-Object {
 $total = (Get-ChildItem $prod -Recurse -File -Force | Measure-Object Length -Sum).Sum
 
 @(
-  "Опись пакета PROD для домена evgeny35.online"
+  "Опись пакета PROD для домена evgeny35.ru"
   "Собрано скриптом tools/build-prod.ps1, руками не править."
   ""
   ("файлов: {0}, всего {1:N2} МБ" -f $rows.Count, ($total / 1MB))
