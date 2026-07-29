@@ -1,0 +1,30 @@
+﻿Опись пакета PROD для домена evgeny35.online
+Собрано скриптом tools/build-prod.ps1, руками не править.
+
+файлов: 25, всего 2,27 МБ
+
+.htaccess                                   3587 b  58DC77E551FA3423
+apple-touch-icon.png                       15632 b  50098A4B9ADE579A
+favicon.ico                                 6102 b  6AEA82B7A183CB5C
+index.html                                 10797 b  CABAE281322A6DC4
+robots.txt                                   533 b  C3DD7BFC31B4DEDC
+assets/css/style.css                       19420 b  15ABF94D642C7A8E
+assets/fonts/Radiant.ttf                  290488 b  B6EF87AD19B8C7A6
+assets/fonts/YauzaTygra.ttf               104084 b  1A42483D71351BA4
+assets/img/baranki.webp                   109444 b  F16EA16E321ED7FB
+assets/img/bg-texture.webp                334594 b  4917CD42ADB65195
+assets/img/birch.webp                     169408 b  D2541C5CAC8393C0
+assets/img/dress-bg.webp                  212480 b  72515AA9D85CEB8D
+assets/img/dress-code.webp                159470 b  5DE7BB882EB79F77
+assets/img/floral.webp                     62736 b  D6BAC03D3FE40764
+assets/img/icon-food-1.webp                 4532 b  1F89AC7C85B39B8F
+assets/img/icon-food-2.webp                10308 b  2BB4FF47AD34211E
+assets/img/nalichnik.webp                 169826 b  88310A2E5AB467DA
+assets/img/og-preview.jpg                  67481 b  6C00C58F5B492A9F
+assets/img/ornament-top.webp              232772 b  BA891B6CD3C9B978
+assets/img/plaque.webp                     97882 b  9745C6C0C7B8AD1B
+assets/img/samovar.webp                   161440 b  CA0FB1164345E02E
+assets/img/social-max.svg                   1473 b  0419A2D05138482D
+assets/img/social-telegram.svg              1065 b  CC8D6BDEF9130E53
+assets/img/torn-paper.webp                128558 b  E84F076DCC09184E
+assets/js/main.js                           3491 b  F0B6CD0C88607AE5

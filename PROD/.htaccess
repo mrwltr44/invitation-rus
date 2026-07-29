@@ -1,0 +1,71 @@
+# Приглашение «Гости званные, да желанные!» — статический сайт.
+# Каждый блок обёрнут в IfModule: если модуля на сервере нет, строка просто
+# игнорируется и сайт не падает с 500.
+# by MRWLTR
+
+# Кодировка. Заголовок сервера сильнее <meta charset> в разметке, поэтому
+# задаём явно — иначе русский текст может приехать в кракозябрах.
+AddDefaultCharset UTF-8
+
+# Наш index.html должен побеждать заглушку хостинга (index.php и прочие).
+DirectoryIndex index.html index.htm
+
+# Каталоги не листаем.
+<IfModule mod_autoindex.c>
+  Options -Indexes
+</IfModule>
+
+# Типы файлов: старые сборки Apache не знают webp и ttf и отдают их как
+# поток байтов — браузер такой шрифт и картинку не покажет.
+<IfModule mod_mime.c>
+  AddType image/webp                  .webp
+  AddType image/svg+xml               .svg
+  AddType font/ttf                    .ttf
+  AddType text/css                    .css
+  AddType application/javascript      .js
+  AddType image/x-icon                .ico
+</IfModule>
+
+# Сжатие текстовых ответов. Картинки и шрифты не трогаем — webp уже сжат.
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain
+  AddOutputFilterByType DEFLATE application/javascript image/svg+xml
+</IfModule>
+
+# Кеш. Разметка не кешируется — иначе правка не доедет до тех, кто уже
+# открывал страницу. Стили и скрипт на час, тяжёлое на месяц.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html              "access plus 0 seconds"
+  ExpiresByType text/css               "access plus 1 hour"
+  ExpiresByType application/javascript "access plus 1 hour"
+  ExpiresByType image/webp             "access plus 30 days"
+  ExpiresByType image/jpeg             "access plus 30 days"
+  ExpiresByType image/png              "access plus 30 days"
+  ExpiresByType image/svg+xml          "access plus 30 days"
+  ExpiresByType image/x-icon           "access plus 30 days"
+  ExpiresByType font/ttf               "access plus 30 days"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  # Шрифты лежат на том же домене, но заголовок не мешает и страхует
+  # на случай, если хостинг раздаёт статику с поддомена.
+  <FilesMatch "\.ttf$">
+    Header set Access-Control-Allow-Origin "*"
+  </FilesMatch>
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# Переезд на HTTPS. Включать ТОЛЬКО после того, как сертификат для домена
+# выпущен и https://evgeny35.online/ открывается без предупреждения.
+# Если включить раньше — сайт уйдёт в бесконечный редирект.
+#
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteCond %{HTTPS} !=on
+#   RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+# </IfModule>
+# ---------------------------------------------------------------------------

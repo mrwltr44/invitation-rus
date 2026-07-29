@@ -8,12 +8,17 @@
 ## Что внутри
 
 ```
-index.html            вся разметка
-assets/css/style.css  вёрстка по координатам макета
-assets/js/main.js     появление блоков при прокрутке
-assets/img/           иллюстрации из Figma, сжатые в WebP
-assets/fonts/         шрифты макета: Yauza TYGRA и Radiant
-_docs/design-map.md   соответствие блоков вёрстки узлам Figma
+index.html             вся разметка
+assets/css/style.css   вёрстка по координатам макета
+assets/js/main.js      появление блоков при прокрутке, окно выбора связи
+assets/img/            иллюстрации из Figma, сжатые в WebP
+assets/fonts/          шрифты макета: Yauza TYGRA и Radiant
+favicon.ico            значок вкладки — самовар на бордовом
+apple-touch-icon.png   он же для экрана телефона
+PROD/                  готовый к заливке пакет, собирается скриптом
+tools/build-prod.ps1   сборка PROD
+_docs/design-map.md    соответствие блоков вёрстки узлам Figma
+_docs/deploy-*.md      инструкция заливки на домен
 ```
 
 ## Как устроена вёрстка
@@ -72,7 +77,17 @@ python -m http.server 8000
 
 ## Публикация
 
-Хостится на GitHub Pages, ветка `main`, корень репозитория.
+Боевой адрес — `https://evgeny35.online/`, статика в каталоге домена на хостинге клиента. Готовый пакет лежит в [PROD](PROD), собирается командой:
+
+```powershell
+powershell -File tools\build-prod.ps1
+```
+
+Порядок заливки, чек-лист проверки и откат — в [_docs/deploy-evgeny35.md](_docs/deploy-evgeny35.md). Папку `PROD` руками не правят: она пересобирается из исходников.
+
+GitHub Pages (ветка `main`, корень репозитория) остаётся черновой площадкой для показа правок.
+
+Страница закрыта от поисковиков мета-тегом `noindex` — на ней имя, дата, адрес и личные контакты. Превью в мессенджерах при этом работает: `robots.txt` обход не запрещает.
 
 ---
 
