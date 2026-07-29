@@ -1,5 +1,5 @@
 /* Приглашение на юбилей — вёрстка по макету Figma «Юбилей» (node 70:178).
-   Макет мобильный, 402×3134. Все координаты ниже — в единицах макета:
+   Макет мобильный, 402×4411. Все координаты ниже — в единицах макета:
    1 единица = 1 пиксель Figma, пересчёт в реальные пиксели через --u.
    by MRWLTR */
 
@@ -59,7 +59,7 @@ body {
 .stage {
   position: relative;
   width: var(--w);
-  height: calc(3134 * var(--u));
+  height: calc(4411 * var(--u));
   margin-inline: auto;
   background: var(--paper);
   overflow: hidden;
@@ -78,9 +78,10 @@ body {
   background: var(--crimson);
 }
 
-.plate--crimson { top: 0;                       height: calc(874 * var(--u)); z-index: 2; }
-.plate--band    { top: calc(1752 * var(--u));   height: calc(146 * var(--u)); z-index: 8; }
-.plate--foot    { top: calc(2346 * var(--u));   height: calc(788 * var(--u)); z-index: 16; }
+.plate--crimson { top: 0;                       height: calc(874 * var(--u)); z-index: 3; }
+.plate--band    { top: calc(1752 * var(--u));   height: calc(146 * var(--u)); z-index: 11; }
+.plate--band-2  { top: calc(2346 * var(--u));   height: calc(146 * var(--u)); z-index: 29; }
+.plate--foot    { top: calc(3503 * var(--u));   height: calc(908 * var(--u)); z-index: 21; }
 
 /* ------------------------------------------------------------ иллюстрации */
 
@@ -106,9 +107,19 @@ body {
   top: calc(-110 * var(--u));
   width: calc(555 * var(--u));
   height: calc(370 * var(--u));
-  z-index: 7;
+  z-index: 9;
 }
 .art--ornament-top img { object-fit: cover; }
+
+/* деревянная табличка «Евгению 35 лет» — висит на берёзе под самоваром */
+.art--plaque {
+  left: calc(12 * var(--u));
+  top: calc(561 * var(--u));
+  width: calc(241 * var(--u));
+  height: calc(241 * var(--u));
+  z-index: 10;
+}
+.art--plaque img { object-fit: cover; }
 
 /* самовар — в макете отражён по горизонтали */
 .art--samovar {
@@ -116,7 +127,7 @@ body {
   top: calc(277 * var(--u));
   width: calc(375 * var(--u));
   height: calc(562 * var(--u));
-  z-index: 6;
+  z-index: 8;
 }
 .art--samovar img {
   object-fit: cover;
@@ -129,7 +140,7 @@ body {
   top: calc(170 * var(--u));
   width: calc(584 * var(--u));
   height: calc(245 * var(--u));
-  z-index: 4;
+  z-index: 5;
 }
 .art--torn img { height: 158.91%; top: -30.68%; }
 
@@ -139,7 +150,7 @@ body {
   top: calc(655 * var(--u));
   width: calc(850 * var(--u));
   height: calc(333 * var(--u));
-  z-index: 3;
+  z-index: 4;
 }
 .art--birch img {
   height: 170.38%;
@@ -155,9 +166,20 @@ body {
   height: calc(790 * var(--u));
   opacity: .1;
   mix-blend-mode: multiply;
-  z-index: 1;
+  z-index: 2;
 }
 .art--texture img { height: 118.86%; top: -.06%; }
+
+/* фактура под блоком про образ гостей — почти невидимая, задаёт тон бумаге */
+.art--dress-bg {
+  left: calc(-164 * var(--u));
+  top: calc(2492 * var(--u));
+  width: calc(726 * var(--u));
+  height: calc(1089 * var(--u));
+  opacity: .03;
+  z-index: 1;
+}
+.art--dress-bg img { object-fit: cover; }
 
 /* резной наличник с датой */
 .art--nalichnik {
@@ -165,20 +187,24 @@ body {
   top: calc(1108 * var(--u));
   width: calc(394 * var(--u));
   height: calc(524 * var(--u));
-  z-index: 9;
+  z-index: 12;
 }
 .art--nalichnik img { height: 112.79%; top: -4.39%; }
 
-/* тот же орнамент, приглушённый, в середине полосы */
-.art--ornament-mid {
+/* тот же орнамент, приглушённый: лежит ровно по бордовым полосам-разделителям.
+   Обе полосы одинаковы по геометрии, различаются только высотой залегания. */
+.art--ornament-mid,
+.art--ornament-band-2 {
   left: calc(-32 * var(--u));
-  top: calc(1644 * var(--u));
   width: calc(555 * var(--u));
-  height: calc(259 * var(--u));
+  height: calc(146 * var(--u));
   opacity: .6;
-  z-index: 11;
 }
-.art--ornament-mid img { height: 142.86%; }
+.art--ornament-mid img,
+.art--ornament-band-2 img { height: 253.42%; top: -73.97%; }
+
+.art--ornament-mid    { top: calc(1752 * var(--u)); z-index: 15; }
+.art--ornament-band-2 { top: calc(2346 * var(--u)); z-index: 30; }
 
 /* связка баранок на верёвке */
 .art--baranki {
@@ -186,7 +212,7 @@ body {
   top: calc(1493 * var(--u));
   width: calc(440 * var(--u));
   height: calc(444 * var(--u));
-  z-index: 12;
+  z-index: 16;
 }
 .art--baranki img {
   left: -.08%;
@@ -205,7 +231,7 @@ body {
   align-items: center;
   justify-content: center;
   overflow: visible;
-  z-index: 13;
+  z-index: 17;
 }
 .art__tilt {
   position: relative;
@@ -213,7 +239,7 @@ body {
   width: calc(420.067 * var(--u));
   height: calc(556.832 * var(--u));
   overflow: hidden;
-  opacity: .05;
+  opacity: .03;
   transform: rotate(22.84deg);
 }
 .art__tilt img { left: -98.84%; width: 198.84%; }
@@ -246,7 +272,7 @@ body {
   top: calc(212 * var(--u));
   font-size: calc(34 * var(--u));
   line-height: calc(45 * var(--u));
-  z-index: 5;
+  z-index: 7;
 }
 
 .t--call-sub {
@@ -254,7 +280,7 @@ body {
   top: calc(312 * var(--u));
   font-size: calc(18 * var(--u));
   line-height: calc(20 * var(--u));
-  z-index: 5;
+  z-index: 6;
 }
 
 .t--date {
@@ -262,7 +288,7 @@ body {
   top: calc(1333 * var(--u));
   font-size: calc(25 * var(--u));
   line-height: calc(45 * var(--u));
-  z-index: 10;
+  z-index: 13;
 }
 
 .t--time {
@@ -270,35 +296,54 @@ body {
   top: calc(1408 * var(--u));
   font-size: calc(64 * var(--u));
   line-height: calc(45 * var(--u));
-  z-index: 10;
+  z-index: 14;
 }
 
 .t--feast {
   font-size: calc(25 * var(--u));
   line-height: calc(45 * var(--u));
-  z-index: 14;
+  z-index: 18;
 }
 .t--feast-1 { left: calc(31 * var(--u));  top: calc(2016 * var(--u)); }
 .t--feast-2 { left: calc(113 * var(--u)); top: calc(2071 * var(--u)); }
 .t--feast-3 { left: calc(31 * var(--u));  top: calc(2126 * var(--u)); }
 .t--feast-4 { left: calc(31 * var(--u));  top: calc(2181 * var(--u)); }
 
+.t--dress {
+  left: calc(31 * var(--u));
+  top: calc(2612 * var(--u));
+  font-size: calc(34 * var(--u));
+  line-height: calc(45 * var(--u));
+  z-index: 27;
+}
+
+.t--dress-sub {
+  left: calc(31 * var(--u));
+  top: calc(2712 * var(--u));
+  font-size: calc(18 * var(--u));
+  line-height: calc(20 * var(--u));
+  z-index: 24;
+}
+
+/* цвета наряда дизайнер выделил не жирностью, а тоном — начертание у Radiant одно */
+.hl { color: var(--ink); }
+
 .t--where {
   left: calc(31 * var(--u));
-  top: calc(2428 * var(--u));
+  top: calc(3585 * var(--u));
   font-size: calc(34 * var(--u));
   line-height: calc(45 * var(--u));
   color: #fff;
-  z-index: 17;
+  z-index: 22;
 }
 
 .t--where-sub {
   left: calc(31 * var(--u));
-  top: calc(2483 * var(--u));
+  top: calc(3640 * var(--u));
   font-size: calc(18 * var(--u));
   line-height: calc(20 * var(--u));
   color: #fff;
-  z-index: 17;
+  z-index: 23;
 }
 
 /* --------------------------------------------------- съедобные украшения */
@@ -312,7 +357,6 @@ body {
   display: block;
   overflow: hidden;
   border-radius: calc(11 * var(--u));
-  z-index: 15;
 }
 
 .treat__art {
@@ -329,6 +373,7 @@ body {
   top: calc(2083 * var(--u));
   width: calc(72 * var(--u));
   height: calc(22 * var(--u));
+  z-index: 20;
 }
 .treat--1 .treat__art {
   left: calc(-1.8 * var(--u));
@@ -344,6 +389,7 @@ body {
   top: calc(2137 * var(--u));
   width: calc(62 * var(--u));
   height: calc(22 * var(--u));
+  z-index: 19;
 }
 .treat--2 .treat__art {
   left: calc(-3 * var(--u));
@@ -353,12 +399,34 @@ body {
   background-image: url("../img/icon-food-1.webp");
 }
 
+/* ------------------------------------------------------- подобающий образ */
+
+/* В макете это Mask group: снимок гостей обрезан прямоугольником со скруглением 20.
+   Как и у значков еды, обрезка сделана рамкой с overflow — не mask-image. */
+.dress-photo {
+  position: absolute;
+  left: calc(31 * var(--u));
+  top: calc(2872 * var(--u));
+  width: calc(340 * var(--u));
+  height: calc(511 * var(--u));
+  border-radius: calc(20 * var(--u));
+  overflow: hidden;
+  z-index: 28;
+}
+
+.dress-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* ------------------------------------------------------------ адрес и карта */
 
 .pill {
   position: absolute;
   left: calc(31 * var(--u));
-  top: calc(2561 * var(--u));
+  top: calc(3718 * var(--u));
   min-width: calc(124 * var(--u));
   height: calc(22 * var(--u));
   padding: 0 calc(10 * var(--u));
@@ -370,7 +438,7 @@ body {
   line-height: calc(22 * var(--u));
   text-decoration: none;
   white-space: nowrap;
-  z-index: 17;
+  z-index: 25;
   transition: transform .25s ease, box-shadow .25s ease;
 }
 
@@ -383,13 +451,13 @@ body {
 .map-card {
   position: absolute;
   left: calc(31 * var(--u));
-  top: calc(2623 * var(--u));
+  top: calc(3780 * var(--u));
   width: calc(340 * var(--u));
   height: calc(391 * var(--u));
   border-radius: calc(20 * var(--u));
   background: var(--paper);
   overflow: hidden;
-  z-index: 17;
+  z-index: 26;
 }
 
 .map-card__frame {
@@ -397,6 +465,39 @@ body {
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+/* --------------------------------------------------------------- отзовитесь */
+
+/* Пока это span: адреса назначения дизайнер не дал. Селектор перечисляет и <a>,
+   чтобы при появлении ссылки хватило поменять один тег в разметке. */
+.cta,
+a.cta {
+  position: absolute;
+  left: calc(31 * var(--u));
+  top: calc(4211 * var(--u));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(340 * var(--u));
+  padding: calc(10 * var(--u));
+  border: calc(1 * var(--u)) solid var(--paper);
+  border-radius: calc(50 * var(--u));
+  color: var(--paper);
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: calc(20 * var(--u));
+  line-height: calc(30 * var(--u));
+  text-align: center;
+  text-decoration: none;
+  z-index: 31;
+  transition: background-color .25s ease, color .25s ease;
+}
+
+a.cta:hover,
+a.cta:focus-visible {
+  background: var(--paper);
+  color: var(--crimson);
 }
 
 /* -------------------------------------------------------------- появления */
@@ -420,7 +521,8 @@ body {
 }
 
 /* приглушённые слои держат свою прозрачность и после появления */
-.art--ornament-mid.is-in { opacity: .6; }
+.art--ornament-mid.is-in,
+.art--ornament-band-2.is-in { opacity: .6; }
 
 /* баранки покачиваются на верёвке, когда появились */
 .art--baranki.is-in img {
@@ -441,5 +543,6 @@ body {
     transition: none;
   }
   .art--baranki.is-in img { animation: none; }
-  .pill { transition: none; }
+  .pill,
+  .cta { transition: none; }
 }
